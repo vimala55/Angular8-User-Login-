@@ -7,16 +7,17 @@ import { AlertService, AuthenticationService } from '../_services';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
-    loginForm = new FormGroup({
-        username: new FormControl(),
-        password: new FormControl()
-    });
+    // loginForm = new FormGroup({
+    //     username: new FormControl(),
+    //     password: new FormControl()
+    // });
 
     // get return url from route parameters or default to '/'
-
+    loginForm !: FormGroup;
     loading = false;
     submitted = false;
-    returnUrl = '';
+    returnUrl = String;
+    error = '';
 
     constructor(
         private formBuilder: FormBuilder,
@@ -63,7 +64,8 @@ export class LoginComponent implements OnInit {
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
-                    this.alertService.error(error);
+                   // this.alertService.error(error);
+                    this.error = error;
                     this.loading = false;
                 });
     }

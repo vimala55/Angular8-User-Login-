@@ -5,7 +5,7 @@ import { Observable, Subject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AlertService {
     private subject = new Subject<any>();
-    private keepAfterRouteChange = false;
+    private keepAfterRouteChange : boolean = false;
 
     constructor(private router: Router) {
         // clear alert messages on route change unless 'keepAfterRouteChange' flag is true
@@ -26,12 +26,12 @@ export class AlertService {
         return this.subject.asObservable();
     }
 
-    success(message: string, keepAfterRouteChange = false) {
+    success(message: string, keepAfterRouteChange : boolean = false) {
         this.keepAfterRouteChange = keepAfterRouteChange;
         this.subject.next({ type: 'success', text: message });
     }
 
-    error(message: string, keepAfterRouteChange = false) {
+    error(message: string, keepAfterRouteChange : boolean = false) {
         this.keepAfterRouteChange = keepAfterRouteChange;
         this.subject.next({ type: 'error', text: message });
     }

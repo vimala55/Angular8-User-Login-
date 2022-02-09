@@ -1,9 +1,13 @@
-﻿<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 8!!</p>
-<h3>All registered users:</h3>
-<ul>
-    <li *ngFor="let user of users">
-        {{user['username']}} ({{user['firstName']}} {{user['lastName']}})
-        - <a (click)="deleteUser(user['id'])" class="text-danger">Delete</a>
-    </li>
-</ul>
+﻿<div class="card mt-4">
+    <h4 class="card-header">Home</h4>
+    <div class="card-body">
+        <p>You're logged in with Angular 9 & JWT!!</p>
+        <p>Your role is: <strong>{{currentUser}}</strong>.</p>
+        <p>This page can be accessed by <u>all authenticated users</u>.</p>
+        <p class="mb-1">Current user from secure api end point:</p>
+        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+        <ul *ngIf="userFromApi">
+            <li>{{userFromApi['firstName']}} {{userFromApi['lastName']}}</li>
+        </ul>
+    </div>
+</div>

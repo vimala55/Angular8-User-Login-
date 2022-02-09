@@ -5,6 +5,7 @@ import { AuthenticationService } from './_services';
 import { User } from './_models';
 
 import './_content/app.less';
+import { Role } from './_models/role';
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
@@ -20,5 +21,9 @@ export class AppComponent {
     logout() {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
+    }
+
+    get isAdmin() {
+        return this.currentUser && this.currentUser.role === Role.Admin;
     }
 }
