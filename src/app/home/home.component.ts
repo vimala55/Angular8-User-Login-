@@ -8,7 +8,8 @@ import { UserService, AuthenticationService } from '../_services';
 export class HomeComponent implements OnInit {
     loading = false;
     currentUser: User;
-    userFromApi: User = new User;
+    users: User[] = [];
+    userFromApi!: User;
     
    
 
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
         this.userService.getById(this.currentUser.id).pipe(first()).subscribe(currentUser => {
             this.loading = false;
             this.userFromApi = currentUser;
+            console.log("user role", currentUser.role);
         });
     }
 
